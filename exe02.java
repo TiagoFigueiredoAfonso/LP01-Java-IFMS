@@ -1,40 +1,59 @@
 /*
-2) Faça um programa que leia a idade de várias pessoas e calcule e mostre a quantidade de
-pessoas por faixa etária. Interrompa a leitura quando for digitado um valor negativo para a idade,
-sendo que essa idade negativa não deve fazer parte do cálculo. As faixas etárias são: até 10 anos,
-de 11 a 20 anos, de 21 a 30 anos, acima de 30 anos.
+2) Faça um programa para ler (no programa principal): nota da 1ª prova, nota da 2ª prova e o
+número de faltas. A seguir deve ser criado dois métodos:
+a) Um método para o cálculo da média: ((p1*4) + (p2*6))/10
+b) Um método para o cálculo da situação do aluno que estará “Aprovado” se média >= 6.0 e o
+número de faltas <= 25, caso contrário o aluno estará “Reprovado”.
  */
-
 import java.util.Scanner;
 
 public class exe02 {
-    public static void main (String[] args){
-        Scanner leia = new Scanner(System.in);
-        int idade, ac=0, dez=0, vinte=0, trinta=0, maior=0;
-        
-        
-        System.out.print("Idade: ");
-        idade = leia.nextInt();
-        
-        while (idade >= 0 ){
-            if(idade > 0 && idade <=10){
-                dez++;
-            }else if (idade > 10 && idade <21){
-                vinte++;
-            }else if(idade > 20 && idade < 31){
-                trinta++;
-            }else {
-                maior++;
-            }
-            System.out.print("Idade: ");
-            idade = leia.nextInt();
-            
-            
-        }
-        System.out.println("Idade até 10 anos: " + dez);
-        System.out.println("Idade dos 10 aos 20: " + vinte);
-        System.out.println("Idade dos 20 aos 30: " + trinta);
-        System.out.println("Acima dos 30: " + maior);
-        
+
+    public static double nota(double p1, double p2) {
+        // Calculo da Media
+        double med;
+        return med = (p1 * 4 + p2 * 6) / 10;
+
     }
+
+    public static void mensagem(String msg) {
+        // mensagem para o corpo principal
+        System.out.println(msg);
+    }
+
+    public static void situacao(double medFinal, int faltas) {
+        // Situacao de aluno aprovado/reprovado
+        if (medFinal > 6 && faltas <= 25) {
+            System.out.println("Aprovado");
+        } else {
+            System.out.println("Reprovado");
+        }
+
+    }
+
+    public static void main(String[] args) {
+        Scanner leia = new Scanner(System.in);
+        double p1, p2, medFinal, saida;
+        int faltas;
+
+        do {
+            System.out.println("Nota 1: ");
+            p1 = leia.nextDouble();
+            if (p1 < 0) {
+                break;
+            }
+            System.out.println("Nota 2: ");
+            p2 = leia.nextDouble();
+            medFinal = nota(p1, p2);
+
+            System.out.println("Número de faltas: ");
+            faltas = leia.nextInt();
+
+            mensagem("Média " + medFinal);
+            mensagem("Total de faltas: " + faltas);
+
+            situacao(medFinal, faltas);
+        } while (p1 > 0);
+    }
+
 }

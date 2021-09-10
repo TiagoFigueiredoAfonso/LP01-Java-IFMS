@@ -1,32 +1,39 @@
 /*
-1) Faça um programa que leia um conjunto de números (X) e imprima sua soma(Soma) e sua média
-(Media). Admita que o valor 9999 é utilizado como sentinela para fim de leitura. O valor usado como
- sentinela não deve fazer parte dos cálculos. ( Aula 5 - Videoaula WHILE 2)
-Ex.: 1, 2, 3, 4 => Soma=10 Media=2,5
+1) Desenvolva um programa que receba o valor de um veículo, calcule e exiba o preço de venda do
+veículo, sabendo que terá um acréscimo de 30%. Os dados deverão ser lidos no programa principal
+e o cálculo deve ser feito por um módulo chamado “carros”. No programa principal deve ser escrito o
+valor final do veículo calculado pelo módulo.
  */
 
 import java.util.Scanner;
 
 public class exe01 {
 
+    static Scanner leia = new Scanner(System.in);
+    
+    // Calculo do Valor
+    public static double precoVenda(double n1) {
+        return n1 * 1.3;
+    }
+    // Bloco da Mensagem
+    public static void mensagem(String msg) {
+        System.out.print(msg);
+    }
+    // Valor de Entrada
+    public static double entrada() {
+        double valor;
+        System.out.print("Valor de Entrada: ");
+        valor = leia.nextDouble();
+        return valor;
+    }
+    
+    // Programa Principal 
     public static void main(String[] args) {
-        Scanner leia = new Scanner(System.in);
-        double num = 0, soma = 0, med = 0, ac = 0;
-        int cont = 1;
+        double num, saida;
 
-        System.out.println(cont + "º valor: ");
-        num = leia.nextDouble();
+        num = entrada();
+        saida = precoVenda(num);
+        mensagem("Valor Final: " + saida+"\n");
 
-        while (num != 9999) {
-            ac = ac + num;
-            med = ac / cont;
-            cont++;
-            System.out.print(cont + "º valor: ");
-            num = leia.nextDouble();
-
-        }
-
-        System.out.println("Soma total: " + ac);
-        System.out.println("Média: " + med);
     }
 }
