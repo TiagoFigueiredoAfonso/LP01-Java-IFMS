@@ -1,59 +1,53 @@
-/*
-2) Faça um programa para ler (no programa principal): nota da 1ª prova, nota da 2ª prova e o
-número de faltas. A seguir deve ser criado dois métodos:
-a) Um método para o cálculo da média: ((p1*4) + (p2*6))/10
-b) Um método para o cálculo da situação do aluno que estará “Aprovado” se média >= 6.0 e o
-número de faltas <= 25, caso contrário o aluno estará “Reprovado”.
- */
+
 import java.util.Scanner;
 
+/*
+2) Faça um programa que leia três vetores de 6 posições de inteiros (A, B e C) e que tenha como
+saída:
+
+• O vetor E resultante da intercalação dos valores presentes nos vetores A, B e C . [3,0
+pontos]
+ */
 public class exe02 {
-
-    public static double nota(double p1, double p2) {
-        // Calculo da Media
-        double med;
-        return med = (p1 * 4 + p2 * 6) / 10;
-
-    }
-
-    public static void mensagem(String msg) {
-        // mensagem para o corpo principal
-        System.out.println(msg);
-    }
-
-    public static void situacao(double medFinal, int faltas) {
-        // Situacao de aluno aprovado/reprovado
-        if (medFinal > 6 && faltas <= 25) {
-            System.out.println("Aprovado");
-        } else {
-            System.out.println("Reprovado");
-        }
-
-    }
 
     public static void main(String[] args) {
         Scanner leia = new Scanner(System.in);
-        double p1, p2, medFinal, saida;
-        int faltas;
 
-        do {
-            System.out.println("Nota 1: ");
-            p1 = leia.nextDouble();
-            if (p1 < 0) {
-                break;
-            }
-            System.out.println("Nota 2: ");
-            p2 = leia.nextDouble();
-            medFinal = nota(p1, p2);
+        int A[] = {1, 2, 3, 4, 5, 6};
+        int B[] = {10, 20, 30, 40, 50, 60};
+        int C[] = {100, 200, 300, 400, 500, 600};
+        int D[] = new int[6];
 
-            System.out.println("Número de faltas: ");
-            faltas = leia.nextInt();
+        //• O vetor D resultante da multiplicação dos elementos de índices opostos, ou seja, o primeiro
+        //elemento do vetor A deve ser multiplicado com o último elemento do vetor B, e o resultado
+        //colocado na primeira posição do vetor D, e assim por diante.
+        int cont = 6;
+        for (int i = 0; i < D.length; i++) {
+            D[i] += A[i] * B[cont = cont - 1];
+        }
+        for (int i = 0; i < D.length; i++) {
+            System.out.print(D[i] + "| ");
+        }
+        System.out.println();
 
-            mensagem("Média " + medFinal);
-            mensagem("Total de faltas: " + faltas);
+        //• O vetor E resultante da intercalação dos valores presentes nos vetores A, B e C .
+        System.out.println("--------------------------------------------");
+       
+        int E[] = new int[18];
+        int x = 0, y = 1, z = 2;
+        for (int i = 0; i < 6; i++) {
 
-            situacao(medFinal, faltas);
-        } while (p1 > 0);
+            E[x] = A[i];
+            x += 3;
+            E[y] = B[i];
+            y += 3;
+            E[z] = C[i];
+            z += 3;
+
+        }
+        for (int i = 0; i < E.length; i++) {
+            System.out.print(E[i] + "| ");
+        }
+        System.out.println();
     }
-
 }
